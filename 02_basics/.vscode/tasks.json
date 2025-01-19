@@ -4,7 +4,12 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "make -f Makefile_debug",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile_debug",
+                "FILE_BASE=${fileBasenameNoExtension}"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -14,7 +19,12 @@
         {
             "label": "build_release",
             "type": "shell",
-            "command": "make -f Makefile",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile",
+                "FILE_BASE=${fileBasenameNoExtension}"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -24,7 +34,12 @@
         {
             "label": "build_release_optimized",
             "type": "shell",
-            "command": "make -f Makefile_release_optimized",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile_release_optimized",
+                "FILE_BASE=${fileBasenameNoExtension}"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": false

@@ -1,5 +1,6 @@
-# Nom de base du fichier
-FILE_BASE = main
+# Nom de base du fichier:
+# donné en argument lors de
+# l'appel de ce makefile
 
 # Nom du fichier source en assembleur
 ASM_FILE = $(FILE_BASE).s
@@ -18,12 +19,12 @@ all: $(EXEC_FILE)
 
 # Règle pour créer l'exécutable
 $(EXEC_FILE): $(OBJ_FILE)
-	ld -m elf_i386 -o $(EXEC_FILE) $(OBJ_FILE)
+	ld -o $(EXEC_FILE) $(OBJ_FILE)
 
 # Règle pour créer le fichier objet
 $(OBJ_FILE): $(ASM_FILE)
 	mkdir -p $(OUT_DIR)
-	as --32 -o $(OBJ_FILE) $(ASM_FILE)
+	as -o $(OBJ_FILE) $(ASM_FILE)
 
 # Règle pour nettoyer les fichiers générés
 clean:
