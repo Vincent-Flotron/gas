@@ -1,0 +1,15 @@
+# gdbinit
+
+# Définir un hook pour les étapes
+define hook-stop
+    printf "ecx: %s\n", $ecx
+    printf "eax: %s\n", $eax
+    printf "ebx: %s\n", $ebx
+    printf "edx: %s\n", $edx
+    printf "esi: %s\n", $esi
+    printf "edi: %s\n", $edi
+    printf "esp: %s\n", $esp
+    printf "ebp: %s\n", $ebp
+    printf "eip: %s\n", $eip
+    printf "eflags: %s\n", $eflags
+end

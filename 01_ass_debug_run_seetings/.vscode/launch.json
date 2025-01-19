@@ -1,0 +1,68 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Assembler",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/debug/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build",
+            "miDebuggerPath": "/usr/bin/gdb",
+            // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} -x gdbinit --interpreter=mi -q -ex 'break _start' --command breakp",
+            // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} -x gdbinit --interpreter=mi -q --command breakp",
+            // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} --interpreter=mi -q --command breakp",
+            "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} --interpreter=mi -q --command ${workspaceFolder}/breakp",
+            "logging": {
+                "engineLogging": true
+            }
+        },
+        {
+            "name": "Release Assembler",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/release/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "build_release"
+        },
+        {
+            "name": "Release Assembler Optimized",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/release_opt/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "build_release_optimized"
+        },
+        {
+            "name": "Run without Debugging",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/release_opt/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+        }
+    ]
+}
