@@ -24,7 +24,7 @@ $(EXEC_FILE): $(OBJ_FILE)
 # Règle pour créer le fichier objet
 $(OBJ_FILE): $(ASM_FILE)
 	mkdir -p $(OUT_DIR)
-	as -o $(OBJ_FILE) $(ASM_FILE)
+	as -g -o $(OBJ_FILE) $(ASM_FILE)
 
 # Règle pour nettoyer les fichiers générés
 clean:

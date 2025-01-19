@@ -25,6 +25,7 @@
             // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} -x gdbinit --interpreter=mi -q --command breakp",
             // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} --interpreter=mi -q --command breakp",
             "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} --interpreter=mi -q --command ${workspaceFolder}/breakp",
+            // "miDebuggerArgs": "${workspaceFolder}/debug/${fileBasenameNoExtension} -x ${workspaceFolder}/gdbinit --interpreter=mi -q --command ${workspaceFolder}/breakp",
             "logging": {
                 "engineLogging": true
             }
