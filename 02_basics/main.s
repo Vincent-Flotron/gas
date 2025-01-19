@@ -1,21 +1,18 @@
-.section .data           # Data section
-msg:
-    .string "Hello, Worldy !\n"
+.section .data
+msg:    .asciz "Hello, World!\n"    # Null-terminated string
 
-.section .text           # Code section
-.globl _start            # Declare start as program's entry point
+.section .text
+.global _start
+
 _start:
-    # Write the message to stdout
-    addl $2, %eax
-    movl $4, %eax        # Syscall number for sys_write
-    movl $1, %ebx        # File descriptor 1 is stdout
-    movl $msg, %ecx      # Pointer to the message
-    movl $16, %edx       # Length of the message
-write_label:
-    int $0x80            # Call kernel
+    # Write sastem call
+    mov $1, %rax        # System call number for write
+    mov $1, %rdi        # File descriptor (1 = stdout)
+    lea msg(%rip), %rsi # Load address of msg into %rsi
+    mov $14, %rdx       # Length of the string
+    syscall             # Make the system call
 
-    # Exit the program
-exit_label:
-    movl $1, %eax        # Syscall number for sys_exit
-    xorl %ebx, %ebx      # Exit code 0
-    int $0x80            # Call kernel
+    # Exit system call
+    mov $60, %rax       # System call number for exit
+    xor %rdi, %rdi      # Return code (0 = cuccess)
+    syscall
