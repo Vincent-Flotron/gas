@@ -10,7 +10,7 @@ _start:
     mov %eax, counter(%rip)   # Store it in memory
 
 loop_start:
-    mov counter(%rip), %eax   # Load counter value into %eax
+    call load_cpt             # Load counter value into %eax
     cmp $0, %eax              # Compare counter with 0
     je loop_end               # Jump to loop_end if counter == 0
 
@@ -26,6 +26,7 @@ before_print:
     mov $20, %rdx             # length to write
     syscall
 
+    call load_cpt             # Load counter value into %eax
     dec %eax                  # Decrement counter
     mov %eax, counter(%rip)   # Store the updated counter back to memory
     jmp loop_start            # Jump back to the start of the loop
@@ -34,6 +35,12 @@ loop_end:
     mov $60, %rax             # Exit system call
     xor %rdi, %rdi            # Exit status = 0
     syscall
+
+
+# Function Load counter
+load_cpt:
+    mov counter(%rip), %eax   # Load counter value into %eax
+    ret
 
 # Function to convert integer to string
 int_to_string:
